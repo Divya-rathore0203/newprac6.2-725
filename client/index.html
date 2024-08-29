@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption Generator</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Image Caption Generator</a>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <h1>Upload Image for Caption Generation</h1>
+            <div class="row">
+                <form id="upload-form" class="col s12">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                            <span>Upload Image</span>
+                            <input type="file" id="image-upload" accept="image/*">
+                        </div>
+                        <img id="preview-image" src="" alt="Image preview" style="max-width: 100%; height: auto;">
+                        <div id="progress-bar" class="progress">
+                            <div class="determinate" style="width: 0%;"></div>
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" placeholder="Select an image">
+                        </div>
+                    </div>
+                    <div class="input-field col s12">
+                        <button class="btn waves-effect waves-light" type="submit">Generate Caption</button>
+                    </div>
+                </form>
+            </div>
+            <div id="caption-result" class="section">
+                <!-- Caption result will be displayed here -->
+            </div>
+        </div>
+    </main>
+    <p id="caption-result">Caption will appear here</p>
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
