@@ -1,14 +1,13 @@
 const request = require('supertest');
-const express = require('express');
-const app = require('C:/Users/dvedr/OneDrive/Desktop/Assignments/SIT725/newprac6.2-725/server/app.js'); 
+const app = require('../app');
 const chai = require('chai');
 const expect = chai.expect;
 
-describe('POST /generate-caption', () => {
+describe('POST /api/generate-caption', () => {
     it('should return a caption', (done) => {
         request(app)
-            .post('/generate-caption')
-            .attach('image', 'C:/Users/dvedr/OneDrive/Desktop/Assignments/SIT725/newprac6.2-725/server/test/download.jpg')
+            .post('/api/generate-caption')
+            .attach('image', 'C:/Users/dvedr/OneDrive/Desktop/Assignments/SIT725/newprac6.2-725/server/Uploads/1724921097342.jpg')
             .expect('Content-Type', /json/)
             .expect(200)
             .end((err, res) => {
