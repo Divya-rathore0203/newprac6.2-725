@@ -12,7 +12,7 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Image Caption Generator</a>
+            <a href="#" class="brand-logo"><i><b><u>Image Caption Generator</u></b></i></a>
         </div>
     </nav>
     <main>
@@ -26,9 +26,6 @@
                             <input type="file" id="image-upload" accept="image/*">
                         </div>
                         <img id="preview-image" src="" alt="Image preview" style="max-width: 100%; height: auto;">
-                        <div id="progress-bar" class="progress">
-                            <div class="determinate" style="width: 0%;"></div>
-                        </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate" type="text" placeholder="Select an image">
                         </div>
@@ -38,12 +35,12 @@
                     </div>
                 </form>
             </div>
-            <div id="caption-result" class="section">
-                <!-- Caption result will be displayed here -->
+            <div id="caption" class="section">
+                <h5>Generated Caption:</h5>
+                <p id="caption-result">Caption will appear here</p> <!-- Caption result will be displayed here -->
             </div>
         </div>
     </main>
-    <p id="caption-result">Caption will appear here</p>
     <!-- Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Custom JS -->

@@ -1,10 +1,14 @@
 const express = require('express');
+const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const mongoose = require('mongoose');
-const Caption = require('./models/Caption'); // Assuming you have a Caption model
+const Caption = require('./models/Caption'); 
+const captionRoutes = require('./routes/captionRoutes');
+const { generateCaption } = require('./controllers/captionController'); 
 const app = express();
 const port = 3000;
+
 
 // Connection URL
 const mongoURI = 'mongodb://localhost:27017/Project6_2';
@@ -14,41 +18,22 @@ mongoose.connect(mongoURI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
 
-// Set up multer for file upload handling
+// Configure Multer for file uploads
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, 'uploads'));
+        cb(null, path.join(__dirname, '../uploads'));
     },
     filename: (req, file, cb) => {
         cb(null, Date.now() + path.extname(file.originalname));
     }
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
-// Serve static files from the 'client' directory
+// Middleware for serving static files
 app.use(express.static(path.join(__dirname, '../client')));
 
-// Handle POST request to generate image caption
-app.post('/generate-caption', upload.single('image'), (req, res) => {
-    if (!req.file) {
-        console.error('No file uploaded.');
-        return res.status(400).json({ error: 'No file uploaded.' });
-    }
-    
-    console.log('File uploaded:', req.file);
-
-    // Placeholder for caption generation logic
-    const generatedCaption = 'This is a simulated caption for the image.';
-    
-    // Save to MongoDB
-    const newCaption = new Caption({
-        caption: generatedCaption,
-        imageUrl: req.file.path, // Or any other path you use
-    });
-    
-    res.json({ caption: generatedCaption });
-
-});
+// Using routes
+app.use('/api', captionRoutes);
 
 // Catch-all route for any other requests
 app.use((req, res) => {

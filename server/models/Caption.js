@@ -11,7 +11,11 @@ const captionSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true
-    }
+    },
+    createdAt: { 
+        type: Date, 
+        default: Date.now 
+    },
 });
 
 // Create and export the Caption model
